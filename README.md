@@ -9,8 +9,8 @@ Bamazon Customers
 - Price (cost to customer)
 - Stock_quantity (how much of the product is available in stores)
 
-![exampeofwhat](customer1.gif)
+![haveit](gifs/customer1.gif)
 
-![exampeofnot](customer2.gif)
+![donthave](gifs/customer2.gif)
 
 
