@@ -38,7 +38,7 @@ var shopping = function(){
     }).then(function(answer1){
         
         var selection = answer1.productToBuy;
-        connection.querry("SELECT * FROM products WHERE Id=?", selection, function(error, res){
+        connection.query("SELECT * FROM products WHERE Id=?", selection, function(error, res){
             if (error) 
             throw error;
             if(res.length ===0){
