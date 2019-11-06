@@ -1,16 +1,19 @@
-var mysql = require ("mysql");
-var inquirer = ("inquirer");
-var table = require ("cli-table2");
+var mysql = require("mysql");
+var inquirer = require("inquirer");
 
 var connection = mysql.createConnection({
-    host: "localhost",
+    host: "127.0.0.1",
     user: "root",
-    Password: "Zxcvbnm24!",
+    password: "Zxcvbnm24!",
     database: "bamazon_db",
     port: 3306
 });
 
-connection.connect();
+connection.connect(function (error) {
+    if (error) throw error;
+    console.log(`Welcome! You are connected with user id ${connection.threadId}`)
+    shopping();
+ });
 
 var display = function() {
     connection.query("SELECT * FROM products", function(error,res){
@@ -21,20 +24,9 @@ var display = function() {
         console.log("");
         console.log("Find Your Product Below");
         console.log("");
+        console.table(res)
     });
-    var table = new table({
-        head: ["Product Id", "Prduct Description", "Cost"],
-        colWidths: [12, 50, 8],
-        colAligns: ["center", "left", "right"],
-        style: {
-            head: ["agua"],
-            compact: true
-        }
-    });
-    for (var = i; i < res.length; i++){
-        table.push ([res[i].id, res[i].products_name, res[i].price]);
-    }
-    console.log(table.toString());
+    
     console.log("");
 };
 
@@ -98,5 +90,5 @@ var shopping = function(){
 
 
 
-diaplay();
+display();
 
